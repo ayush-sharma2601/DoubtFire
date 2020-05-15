@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+    android:background="#302E2C"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_above="@id/give_answer"
+        >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/body"
+    tools:context=".Activities.FeedOnClick">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/head"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Posted by: "
+            android:textSize="15dp"
+            android:textColor="#FF6D00"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/feed_poster"
+            android:textSize="15dp"
+            android:textColor="#fff"
+            android:layout_marginTop="2dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status"
+        android:layout_below="@id/head"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "
+            android:textSize="12dp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="6dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/is_solved"
+            android:textSize="12dp"
+            android:textColor="@color/ic_launcher_background"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_below="@id/status"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:id="@+id/feed_expanded_image"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feed_expanded_image"
+        android:id="@+id/feed_desc_container">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="100dp"
+        android:layout_margin="5dp"
+        android:textColor="@color/ic_launcher_background"
+        android:layout_below="@id/feed_expanded_image"
+        android:id="@+id/feed_expanded_desc"/>
+</ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="3dp"
+        android:textAlignment="center"
+        android:background="@color/colorPrimary"
+        android:layout_below="@id/feed_desc_container"
+        android:id="@+id/solutions"
+        android:layout_marginHorizontal="10dp"
+        android:text="Solutions"
+        android:textColor="@color/ic_launcher_background"
+        android:textStyle="bold"
+        android:textSize="17sp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:layout_below="@id/solutions"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/feed_expanded_rv"/>
+</RelativeLayout>
+    </ScrollView>
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Give Answer"
+    android:background="#fff"
+    android:layout_margin="20dp"
+    android:textColor="@color/colorPrimary"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/give_answer"/>
+    </RelativeLayout>
+
+
+
+

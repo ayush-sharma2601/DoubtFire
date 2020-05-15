@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.LoginActivity"
+    android:background="@drawable/background1"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/header">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/signup"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:text="Sign In"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginBottom="40dp"/>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/signup"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/logo"
+        android:src="@drawable/icon_full_color"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:textColorHint="#fff"
+            android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="Email"
+        android:textColorHint="#fff"
+        android:id="@+id/login_email"
+        android:backgroundTint="#fff"
+        android:textColor="@color/colorAccent"
+        android:focusable="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:textColorHint="#fff"
+        android:layout_height="wrap_content"
+        app:passwordToggleTint="#fff"
+        app:passwordToggleEnabled="true">
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="Password"
+        android:textColor="#fff"
+        android:id="@+id/login_password"
+        android:inputType="textPassword"
+        android:backgroundTint="#fff"
+        android:focusable="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_margin="20dp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_back"
+        android:id="@+id/login_btn"
+        android:text="Sign in"
+        android:textColor="@color/colorAccent"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="20dp"
+                android:textAllCaps="false"
+                android:background="@drawable/button_back"
+                android:id="@+id/signin_page_btn"
+                android:text="Sign up"
+                android:textColor="@color/colorAccent"/>
+        </LinearLayout>
+
+
+    <ProgressBar
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:progressTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:visibility="invisible"
+        android:id="@+id/pgbar"
+        />
+    </LinearLayout>
+
+</RelativeLayout>

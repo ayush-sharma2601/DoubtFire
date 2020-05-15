@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#302E2C"
+    android:padding="10dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/heading"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solution by: "
+            android:textSize="15dp"
+            android:textColor="#FF6D00"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/solution_who_posted"
+            android:textSize="15dp"
+            android:textColor="#fff"
+            android:layout_marginTop="2dp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:padding="3dp"
+        android:layout_below="@id/heading"
+        android:id="@+id/solution_item_image"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ic_launcher_background"
+        android:id="@+id/solution_desc"
+        android:layout_marginTop="2dp"
+        android:layout_below="@id/solution_item_image"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"/>
+</RelativeLayout>

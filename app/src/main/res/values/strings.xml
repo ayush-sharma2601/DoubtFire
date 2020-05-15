@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DoubtFire</string>
+    <string name="yesbtn">yes</string>
+
+   <string name="math">Type the mathematical expression to be computed here.</string>
+    <string name="math_eg">eg.2^2-sqrt(5)*43-3.66</string>
+</resources>

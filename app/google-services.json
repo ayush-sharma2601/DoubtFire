@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "221712223750",
+    "firebase_url": "https://doubtfire-ca383.firebaseio.com",
+    "project_id": "doubtfire-ca383",
+    "storage_bucket": "doubtfire-ca383.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221712223750:android:6b1cd320ddc4212b0ebd87",
+        "android_client_info": {
+          "package_name": "com.example.doubtfire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221712223750-1q7vjt2hc5suo7cd0dejs72t0e6i37sl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCZRycGA7XAJdHjNXvafZ8XSmvaQnBHtY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221712223750-1q7vjt2hc5suo7cd0dejs72t0e6i37sl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
