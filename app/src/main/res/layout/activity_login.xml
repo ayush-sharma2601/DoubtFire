@@ -55,7 +55,7 @@
         android:textColorHint="#fff"
         android:id="@+id/login_email"
         android:backgroundTint="#fff"
-        android:textColor="@color/colorAccent"
+        android:textColor="#fff"
         android:focusable="true"/>
         </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -90,7 +90,7 @@
         android:background="@drawable/button_back"
         android:id="@+id/login_btn"
         android:text="Sign in"
-        android:textColor="@color/colorAccent"/>
+        android:textColor="#fff"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
@@ -99,7 +99,7 @@
                 android:background="@drawable/button_back"
                 android:id="@+id/signin_page_btn"
                 android:text="Sign up"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="#fff"/>
         </LinearLayout>
 
 

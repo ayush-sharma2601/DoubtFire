@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.doubtfire.Fragments.DoubtUploadFragment;
+import com.example.doubtfire.Fragments.FeedContainingFragment;
 import com.example.doubtfire.Fragments.FeedFragment;
 import com.example.doubtfire.Fragments.ProfileFragment;
 import com.example.doubtfire.R;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        loadFragment(new FeedFragment());
+        loadFragment(new FeedContainingFragment());
         heading.setText("Feed");
         menubtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (i){
                     case 0:
                     {
-                        loadFragment(new FeedFragment());
+                        loadFragment(new FeedContainingFragment());
                         heading.setText("Feed");
                         toolbar.setVisibility(View.VISIBLE);
                     }

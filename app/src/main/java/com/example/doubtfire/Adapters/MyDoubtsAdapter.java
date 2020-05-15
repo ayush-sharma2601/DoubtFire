@@ -191,7 +191,7 @@ public class MyDoubtsAdapter extends RecyclerView.Adapter<MyDoubtsAdapter.MDVH> 
                 doubtDesc.setText(imageModel.description);
                 doubtStatus.setText(imageModel.isSolved);
             }
-            Picasso.get().load(imageModel.downurl).fit().centerCrop().into(doubtImage);
+            Picasso.get().load(imageModel.downurl).resize(200,150).centerCrop().into(doubtImage);
         }
     }
 }

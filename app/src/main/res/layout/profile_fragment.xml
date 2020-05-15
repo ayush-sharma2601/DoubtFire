@@ -8,7 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimaryDark">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -43,10 +43,10 @@
             android:layout_margin="10dp"
             app:tabSelectedTextColor="#FFFFFF"
             app:tabRippleColor="#FFFFFF"
-            app:tabIndicatorColor="#fff"
+            app:tabIndicatorColor="#FFD600"
             app:tabTextColor="#fff"
             app:tabIndicatorHeight="5dp"
-            android:background="@color/colorPrimary" >
+            android:background="@color/colorPrimaryDark" >
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"

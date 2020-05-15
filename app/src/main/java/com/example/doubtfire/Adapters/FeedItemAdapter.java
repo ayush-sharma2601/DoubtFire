@@ -126,7 +126,7 @@ public class FeedItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             viewHolder.feedDesc.setText(imageModel.description);
         }
 
-        Picasso.get().load(imageModel.downurl).fit().centerCrop().into(viewHolder.feedImage);
+        Picasso.get().load(imageModel.downurl).resize(200,150).centerCrop().into(viewHolder.feedImage);
 
     }
 
