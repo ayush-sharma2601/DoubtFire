@@ -46,7 +46,7 @@ public class MyDoubtsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         feedRV.setLayoutManager(linearLayoutManager);
         feedRV.setItemAnimator(new DefaultItemAnimator());
-        adapter = new MyDoubtsAdapter(data,this);
+        adapter = new MyDoubtsAdapter(data,0);
         feedRV.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();

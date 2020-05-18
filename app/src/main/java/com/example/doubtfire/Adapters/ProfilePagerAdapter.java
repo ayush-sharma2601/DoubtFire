@@ -6,9 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.doubtfire.Fragments.CompletedDoubtsFragment;
-import com.example.doubtfire.Fragments.FeedContainingFragment;
 import com.example.doubtfire.Fragments.MyDoubtsFragment;
-import com.example.doubtfire.Fragments.SearchFeedFragment;
 
 public class ProfilePagerAdapter extends FragmentPagerAdapter {
 

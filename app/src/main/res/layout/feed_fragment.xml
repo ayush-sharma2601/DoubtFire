@@ -1,23 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:gravity="center"
     android:layout_width="match_parent"
     android:id="@+id/feed_back"
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@id/chips"
+        android:layout_alignParentTop="true"
         android:id="@+id/feed_rv"/>
+
 <!--    <ProgressBar-->
 <!--        android:layout_width="20dp"-->
 <!--        android:layout_height="20dp"-->
 <!--        android:id="@+id/scroll_pgbar"/>-->
 
 
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/chips"
+        android:gravity="center"
+        android:padding="2dp"
+        android:nestedScrollingEnabled="true"
+        android:layout_alignParentEnd="true"
+        >
 
-</LinearLayout>
+        <com.google.android.material.chip.Chip
+            android:layout_width="70dp"
+            android:layout_height="40sp"
+            android:text="Math"
+            android:id="@+id/math_chip"
+            android:rotation="90"
+            app:chipIconSize="8dp"
+            app:chipBackgroundColor="@color/colorAccent"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:textColor="@color/colorPrimaryDark"/>
+        <com.google.android.material.chip.Chip
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:rotation="90"
+            android:layout_marginTop="35dp"
+            android:textSize="8sp"
+            app:chipIconSize="8dp"
+            app:chipBackgroundColor="@color/colorAccent"
+            android:textAlignment="center"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Phy"
+            android:id="@+id/phy_chip"/>
+        <com.google.android.material.chip.Chip
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:textColor="@color/colorPrimaryDark"
+
+            app:chipBackgroundColor="@color/colorAccent"
+            android:rotation="90"
+            android:textAlignment="center"
+            android:layout_marginTop="35dp"
+            android:textSize="8sp"
+            app:chipIconSize="10dp"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:text="CS"
+            android:id="@+id/cs_chip"/>
+        <com.google.android.material.chip.Chip
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:rotation="90"
+            app:chipBackgroundColor="@color/colorAccent"
+            android:layout_marginTop="35dp"
+            android:textSize="8sp"
+            android:textAlignment="center"
+            app:chipIconSize="10dp"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:text="Bio"
+            android:id="@+id/bio_chip"/>
+        <com.google.android.material.chip.Chip
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:rotation="90"
+            android:layout_marginTop="35dp"
+            app:chipBackgroundColor="@color/colorAccent"
+            android:textSize="8sp"
+            android:textAlignment="center"
+            app:chipIconSize="10dp"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:text="Chem"
+            android:id="@+id/chem__chip"/>
+        <com.google.android.material.chip.Chip
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:rotation="90"
+            app:chipBackgroundColor="@color/colorAccent"
+            android:textAlignment="center"
+            android:layout_marginTop="35dp"
+            android:textSize="8sp"
+            app:chipIconSize="8dp"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:text="ES"
+            android:id="@+id/es_chip"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#302E2C"
+    android:background="#fff"
     tools:context=".Activities.UploadSolutionActivity">
 
     <ImageView
@@ -17,10 +17,10 @@
     <EditText
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorAccent"
         android:hint="Add Description"
-        android:textColor="#fff"
-        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
+        android:textColorHint="@color/colorPrimaryDark"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:id="@+id/upload_desc"/>
@@ -31,27 +31,30 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="From Gallery"
             android:id="@+id/gallery_btn"
-            android:textColor="@color/colorPrimary"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:textColor="@color/colorPrimaryDark"
             android:background="#fff"
             android:layout_margin="10dp"/>
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="Open Camera"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:id="@+id/camera_btn"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:background="#fff"
             android:layout_margin="10dp"/>
     </LinearLayout>
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Upload"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:id="@+id/upload_btn"
         android:textColor="#FFFFFF"
         android:background="@color/colorPrimary"
@@ -65,7 +68,7 @@
         android:layout_marginBottom="30dp"
         android:progressTint="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/pgbar"
         />
 

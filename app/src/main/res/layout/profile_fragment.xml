@@ -7,46 +7,71 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
-        <LinearLayout
+        android:elevation="0dp"
+        app:elevation="0dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/card_back"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:gravity="center_vertical">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
-            app:cardCornerRadius="25dp"
-            android:id="@+id/profile_photo">
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:cardCornerRadius="22.5dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/profile_photo_card">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_me"
-                android:padding="10dp"
-                android:tint="@color/colorPrimary"/>
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/logout_btn"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_logout" />
         </androidx.cardview.widget.CardView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/profile_name"
             android:textColor="#fff"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="NoobMaster69"
             android:textSize="24dp"/>
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profile_number"
+                android:textColor="#fff"
+                android:layout_marginLeft="10dp"
+                android:layout_alignBaseline="@id/profile_name"
+                android:layout_toRightOf="@id/profile_name"
+                android:layout_centerVertical="true"
+                android:text="9318458933"
+                android:textSize="14dp"/>
+
+        </RelativeLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/profile_tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:tabSelectedTextColor="#FFFFFF"
-            app:tabRippleColor="#FFFFFF"
+            android:layout_height="30dp"
+            android:layout_margin="3dp"
+            app:tabSelectedTextColor="@color/colorPrimaryDark"
+            app:tabRippleColor="@color/colorAccent"
             app:tabIndicatorColor="#FFD600"
-            app:tabTextColor="#fff"
+            app:tabTextColor="#675454"
             app:tabIndicatorHeight="5dp"
-            android:background="@color/colorPrimaryDark" >
+            android:background="#fff" >
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"

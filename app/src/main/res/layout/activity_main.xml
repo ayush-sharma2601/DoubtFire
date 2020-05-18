@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer"
+    android:background="#fff"
+    android:orientation="vertical"
     tools:context=".Activities.MainActivity">
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
     <Toolbar
         android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:layout_width="match_parent"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="10dp"
         android:layout_height="50dp"
         android:background="@drawable/card_back"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:id="@+id/toolbar"
-        android:gravity="center_horizontal">
+        android:id="@+id/toolbar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_menu_icon_doubtfire"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_full_color"
+            android:layout_alignParentStart="true"
             android:id="@+id/menu_btn"/>
         <TextView
             android:layout_width="wrap_content"
@@ -34,9 +33,28 @@
             android:text="My Profile"
             android:id="@+id/frag_heading"
             android:textSize="24sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/menu_btn"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
-            android:textColor="#FFD600"/>
+            android:textColor="@color/colorAccent"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/logout_btn"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_logout" />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/math_btn"
+                android:layout_toLeftOf="@id/logout_btn"
+                android:src="@drawable/ic_math" />
+        </RelativeLayout>
     </Toolbar>
 
 
@@ -48,45 +66,7 @@
             android:id="@+id/main_frame"
             android:layout_height="match_parent"
             android:layout_above="@id/bottom_bar_card"/>
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:padding="5dp"-->
-<!--            android:id="@+id/bottm_nav2"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:weightSum="3">-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_weight="1">-->
-<!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:src="@drawable/ic_feed"-->
-<!--                    style="@style/Widget.Design.FloatingActionButton"-->
-<!--                    />-->
-<!--                <com.google.android.material.textview.MaterialTextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Feed"/>-->
 
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_weight="1"></LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="vertical"-->
-<!--                android:layout_weight="1"></LinearLayout>-->
-<!--        </LinearLayout>-->
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
@@ -101,31 +81,16 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             app:iconSize="20dp"
-            app:iconTintActive="#FFD600"
+            app:iconTintActive="@color/colorAccent"
             app:backgroundColor="@color/colorPrimaryDark"
             android:layout_alignParentBottom="true"
             app:menu="@menu/bottom_nav_menu"/>
 </androidx.cardview.widget.CardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_above="@id/bottom_bar_card"
-            android:id="@+id/chips"/>
 
     </RelativeLayout>
 </LinearLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="250dp"
-        android:layout_height="match_parent"
-        android:id="@+id/side_nav"
-        app:headerLayout="@layout/side_drawer_header"
-        app:itemIconTint="@color/colorPrimaryDark"
-        app:menu="@menu/side_drawer_menu"
-        android:background="@drawable/card_back"
-        android:backgroundTint="#ABFFF4"
-        android:layout_gravity ="start"/>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+
+

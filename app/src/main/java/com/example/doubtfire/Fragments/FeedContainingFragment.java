@@ -6,7 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +19,7 @@ import com.example.doubtfire.Adapters.FeedItemAdapter;
 import com.example.doubtfire.Models.ImageModel;
 import com.example.doubtfire.Models.UserModel;
 import com.example.doubtfire.R;
+import com.google.android.material.chip.Chip;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -41,7 +42,9 @@ public class FeedContainingFragment extends Fragment {
     ArrayList<ImageModel> data = new ArrayList<>();
     ArrayList<ImageModel> populateData = new ArrayList<>();
     DatabaseReference databaseReference;
-    LinearLayout feedBack;
+    RelativeLayout feedBack;
+    Chip math,phy,cs,bio,chem,es;
+    ArrayList<String> subjectList = new ArrayList<>();
 
     boolean isLoading = false;
 
@@ -50,23 +53,27 @@ public class FeedContainingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.feed_fragment,container,false);
-        feedBack = view.findViewById(R.id.feed_back);
-        data.clear();
-        //Recycler view work
-        feedRV = view.findViewById(R.id.feed_rv);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
-        feedRV.setLayoutManager(linearLayoutManager);
-        feedRV.setItemAnimator(new DefaultItemAnimator());
+        init();
 
+        chipListener();
 
         //setting up firebase needs
+        loadFromFirebase(subjectList);
+//        Log.i(TAG, "onCreateView: "+populateData.size());
+
+//        initScrollListener();
+
+        return view;
+    }
+
+    private void loadFromFirebase(ArrayList<String> subjectList) {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
         Query imageQuery = databaseReference.child("imagesinfo").orderByKey();
         imageQuery.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                final ImageModel image = dataSnapshot.getValue(ImageModel.class);
+                 final ImageModel image = dataSnapshot.getValue(ImageModel.class);
                 databaseReference.child("users/"+image.userId).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -82,13 +89,20 @@ public class FeedContainingFragment extends Fragment {
                     }
                 });
 //                data.add(image);
-//                Log.i(TAG, "onChildAdded: "+data.size());
+                Log.i(TAG, "onChildAdded: "+data.size());
 //                for(int i=0;(i<3 && i<data.size()) ;i++)
 //                {
 //                    adapter.addImage(data.get(i));
 //                    adapter.notifyDataSetChanged();
 //                }
-                adapter.addImage(image);
+                if(subjectList.size()==0)
+                {
+                    adapter.addImage(image);
+                }
+                else if(subjectList.contains(image.subject))
+                {
+                    adapter.addImage(image);
+                }
             }
 
             @Override
@@ -118,10 +132,47 @@ public class FeedContainingFragment extends Fragment {
 
         adapter = new FeedItemAdapter(populateData,this);
         feedRV.setAdapter(adapter);
+    }
 
-//        initScrollListener();
+    private void init() {
+        feedBack = view.findViewById(R.id.feed_back);
+        math = view.findViewById(R.id.math_chip);
+        phy = view.findViewById(R.id.phy_chip);
+        cs = view.findViewById(R.id.cs_chip);
+        bio = view.findViewById(R.id.bio_chip);
+        chem = view.findViewById(R.id.chem__chip);
+        es = view.findViewById(R.id.es_chip);
+//        data.clear();
+        //Recycler view work
+        feedRV = view.findViewById(R.id.feed_rv);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        feedRV.setLayoutManager(linearLayoutManager);
+        feedRV.setItemAnimator(new DefaultItemAnimator());
+    }
 
-        return view;
+    private void chipListener() {
+        singleChipListener(math,"Maths");
+        singleChipListener(phy,"Physics");
+        singleChipListener(cs,"Computer Science");
+        singleChipListener(bio,"Biology");
+        singleChipListener(es,"Electrical Sciences");
+        singleChipListener(chem,"Chemistry");
+    }
+
+    public void singleChipListener(Chip chip,String subject)
+    {
+        chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked)
+                subjectList.add(subject);
+            else {
+                if (subjectList.contains(subject)) {
+                    subjectList.remove(subject);
+                }
+            }
+            Log.i(TAG, "chipListener: " + subjectList);
+            populateData.clear();
+            loadFromFirebase(subjectList);
+        });
     }
 
 

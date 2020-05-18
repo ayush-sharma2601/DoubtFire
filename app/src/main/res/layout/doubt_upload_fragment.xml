@@ -2,23 +2,27 @@
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     android:gravity="center">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:padding="2dp"
+        android:background="@drawable/button_back_2"
         android:src="@drawable/ic_photo"
         android:id="@+id/upload_sample"/>
     <EditText
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorAccent"
         android:hint="Add Description"
         android:layout_marginTop="10dp"
-        android:textColorHint="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimaryDark"
         android:textColor="@color/colorPrimaryDark"
         android:textAlignment="center"
         android:id="@+id/upload_desc"/>
@@ -26,8 +30,9 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:popupBackground="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
+        android:textAlignment="center"
+        android:popupBackground="@drawable/dropdown_back"
+        android:backgroundTint="@color/ic_launcher_background"
         android:spinnerMode="dropdown"
         android:id="@+id/subject_spinner"/>
     <LinearLayout
@@ -36,27 +41,30 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="From Gallery"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:id="@+id/gallery_btn"
         android:textColor="@color/colorPrimaryDark"
         android:background="@drawable/button_back_2"
         android:layout_margin="10dp"/>
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Open Camera"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:id="@+id/camera_btn"
         android:textColor="@color/colorPrimaryDark"
         android:background="@drawable/button_back_2"
         android:layout_margin="10dp"/>
     </LinearLayout>
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Upload"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:id="@+id/upload_btn"
         android:textColor="#FFFFFF"
         android:background="@color/colorPrimaryDark"
@@ -70,7 +78,7 @@
         android:layout_marginBottom="30dp"
         android:progressTint="#FFD600"
         android:backgroundTint="#FFD600"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/pgbar"
         />
 

@@ -214,7 +214,8 @@ public class DoubtUploadFragment extends Fragment implements AdapterView.OnItemS
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
+                if(uri!=null)
+                {progressBar.setVisibility(View.VISIBLE);
                 StorageReference storageRef = FirebaseStorage.getInstance().getReference();
                 StorageReference imagesRef = storageRef.child("Doubts");
                 StorageReference userRef = imagesRef.child(fbUser.getUid());
@@ -258,6 +259,7 @@ public class DoubtUploadFragment extends Fragment implements AdapterView.OnItemS
 
                     }
                 });
+                };
             }
         });
 

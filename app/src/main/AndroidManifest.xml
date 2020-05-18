@@ -25,20 +25,29 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
-        <activity android:name=".Activities.ImageViewer"></activity>
-        <activity android:name=".Activities.UploadSolutionActivity" />
-        <activity android:name=".Activities.FeedOnClick" />
-        <activity android:name=".Activities.BasicMathActivity" />
-        <activity android:name=".Activities.SignUpActivity" />
-        <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.Splash">
+        <activity android:name=".Activities.ImageViewer"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activities.UploadSolutionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.FeedOnClick"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.BasicMathActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.SignUpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.Splash"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.MainActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>

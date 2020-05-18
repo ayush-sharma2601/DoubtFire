@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doubtfire.Activities.FeedOnClick;
-import com.example.doubtfire.Fragments.MyDoubtsFragment;
 import com.example.doubtfire.Models.ImageModel;
 import com.example.doubtfire.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,15 +37,15 @@ import static android.content.ContentValues.TAG;
 public class MyDoubtsAdapter extends RecyclerView.Adapter<MyDoubtsAdapter.MDVH> {
 
     private ArrayList<ImageModel> mDataset;
-    MyDoubtsFragment myDoubtsFragment;
     FirebaseUser user;
+    int code;
     // flag for footer ProgressBar (i.e. last item of list)
     private boolean isLoadingAdded = false;
     DatabaseReference database,db;
 
-    public MyDoubtsAdapter(ArrayList<ImageModel> mDataset, MyDoubtsFragment activity) {
+    public MyDoubtsAdapter(ArrayList<ImageModel> mDataset,int code) {
         this.mDataset = mDataset;
-        this.myDoubtsFragment = activity;
+        this.code = code;
     }
 
     @NonNull
@@ -191,6 +190,8 @@ public class MyDoubtsAdapter extends RecyclerView.Adapter<MyDoubtsAdapter.MDVH> 
                 doubtDesc.setText(imageModel.description);
                 doubtStatus.setText(imageModel.isSolved);
             }
+            if(code == 1)
+                doubtStatus.setText(imageModel.solutions + " solution(s)");
             Picasso.get().load(imageModel.downurl).resize(200,150).centerCrop().into(doubtImage);
         }
     }

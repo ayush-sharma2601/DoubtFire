@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
-    android:background="#302E2C"
+    android:background="#fff"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:text="Posted by: "
             android:textSize="15dp"
-            android:textColor="#FF6D00"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="2dp"/>
         <TextView
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/feed_poster"
             android:textSize="15dp"
-            android:textColor="#fff"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="2dp"/>
     </LinearLayout>
 
@@ -53,8 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Status: "
+            android:textStyle="bold"
             android:textSize="12dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="6dp"/>
         <TextView
@@ -62,7 +64,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/is_solved"
             android:textSize="12dp"
-            android:textColor="@color/ic_launcher_background"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="2dp"/>
 
@@ -72,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/status"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
@@ -86,7 +89,7 @@
         android:layout_height="wrap_content"
         android:maxHeight="100dp"
         android:layout_margin="5dp"
-        android:textColor="@color/ic_launcher_background"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_below="@id/feed_expanded_image"
         android:id="@+id/feed_expanded_desc"/>
 </ScrollView>
@@ -96,7 +99,7 @@
         android:layout_height="wrap_content"
         android:paddingVertical="3dp"
         android:textAlignment="center"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/feed_back"
         android:layout_below="@id/feed_desc_container"
         android:id="@+id/solutions"
         android:layout_marginHorizontal="10dp"
@@ -114,13 +117,14 @@
 </RelativeLayout>
     </ScrollView>
 
-<Button
+<com.google.android.material.button.MaterialButton
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Give Answer"
-    android:background="#fff"
-    android:layout_margin="20dp"
-    android:textColor="@color/colorPrimary"
+    style="@style/Widget.MaterialComponents.FloatingActionButton"
+    android:layout_margin="10dp"
+    android:textStyle="bold"
+    android:textColor="@color/colorPrimaryDark"
     android:layout_alignParentBottom="true"
     android:id="@+id/give_answer"/>
     </RelativeLayout>

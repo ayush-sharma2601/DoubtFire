@@ -4,6 +4,7 @@ public class UserModel {
     public String uid;
     public String name;
     public String number;
+    public String photoID;
 
     public UserModel(){}
 
@@ -11,6 +12,7 @@ public class UserModel {
         this.uid = uid;
         this.name = name;
         this.number = number;
+        this.photoID = "null";
     }
 
     public String getUid() {
