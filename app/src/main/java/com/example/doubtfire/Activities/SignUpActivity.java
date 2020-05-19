@@ -1,5 +1,6 @@
 package com.example.doubtfire.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.doubtfire.Models.UserModel;
 import com.example.doubtfire.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +34,14 @@ public class SignUpActivity extends AppCompatActivity {
     DatabaseReference userReference;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent();
+        setResult(2,intent);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
@@ -44,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
                 final String phone = numberET.getText().toString().trim();
                 final String email = emailET.getText().toString().trim();
                 final String password = passwordET.getText().toString().trim();
+                signUpBtn.setTag("verify");
                 //form check
                 {if(name.isEmpty())usernameET.setError("username required");
                 else usernameET.setError(null);
@@ -53,10 +64,32 @@ public class SignUpActivity extends AppCompatActivity {
                 else passwordET.setError(null);
                 if(email.isEmpty())emailET.setError("email required");
                 else emailET.setError(null);}
-
                 if(usernameET.getError()==null && numberET.getError()==null && emailET.getError()==null && passwordET.getError()==null)
-                    signupProcess(name,phone,email,password);
-
+              {
+                    if(signUpBtn.getTag().toString().equals("verify"))
+                    {
+                        MaterialAlertDialogBuilder phoneDialog = new MaterialAlertDialogBuilder(SignUpActivity.this);
+                        phoneDialog.setTitle("Verify Phone Number").setBackground(getDrawable(R.drawable.feed_back))
+                                .setMessage(phone+"\n I'm gonna verify this for you so make sure you added the correct number")
+                                .setCancelable(true)
+                                .setNegativeButton("Change it", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        numberET.requestFocus();
+                                    }
+                                })
+                                .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(SignUpActivity.this,VerifyPhoneActivity.class);
+                                        intent.putExtra("phone","+91 "+phone);
+                                        startActivityForResult(intent,26);
+                                    }
+                                }).show();
+                    }
+                    else if(signUpBtn.getTag().toString().equals("sign"))
+                        signupProcess(name,phone,email,password);
+                }
             }
         });
 
@@ -107,5 +140,17 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 26
+        if(requestCode==26)
+        {
+            Toast.makeText(SignUpActivity.this,"Phone Number Verified",Toast.LENGTH_LONG).show();
+            signUpBtn.setTag("sign");
+        }
     }
 }

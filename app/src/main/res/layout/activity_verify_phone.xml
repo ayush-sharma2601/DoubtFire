@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    tools:context=".Activities.VerifyPhoneActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="70dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/galano_grotesque_alt"
+        android:layout_centerHorizontal="true"
+        android:text="Verify Phone Number"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/heading"
+        />
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:textSize="13sp"
+        android:text="@string/verifytext"
+        android:layout_above="@id/code_box"
+        android:textColor="#fff"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/ic_launcher_background"
+        android:textAlignment="center"
+        android:id="@+id/code_box"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_above="@id/verify_btn"
+        android:layout_marginBottom="10dp">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:hint="Enter Code"
+            android:textSize="16sp"
+            android:fontFamily="@font/aller"
+            android:textColor="@color/ic_launcher_background"
+            android:id="@+id/code"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="Verify"
+        android:fontFamily="@font/gotham_bold"
+        style="@style/Widget.MaterialComponents.Button"
+        android:id="@+id/verify_btn"/>
+    <ProgressBar
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:progressTint="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:visibility="invisible"
+        android:id="@+id/pgbar"
+        />
+</RelativeLayout>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,9 +43,11 @@ public class FeedOnClick extends AppCompatActivity {
     FirebaseUser fbUser;
     ArrayList<SolutionImage> solutionSet = new ArrayList<>();
     TextView posterTV,isSolvedTV,descTV,solutionTV;
-    ImageView imageView;
+    ImageView imageView,phoneBtn;
     Button giveAnswer;
-    LinearLayout head,status;
+    LinearLayout status;
+    RelativeLayout head;
+    String number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,13 @@ public class FeedOnClick extends AppCompatActivity {
                 Intent intent = new Intent(FeedOnClick.this,UploadSolutionActivity.class);
                 intent.putExtra("doubtkey",key);
                 startActivity(intent);
+            }
+        });
+
+        phoneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FeedOnClick.this,number,Toast.LENGTH_LONG).show();
             }
         });
 
@@ -123,6 +133,7 @@ public class FeedOnClick extends AppCompatActivity {
         head = findViewById(R.id.head);
         solutionTV = findViewById(R.id.solutions);
         status = findViewById(R.id.status);
+        phoneBtn= findViewById(R.id.phone_btn);
         solutionsRV.setLayoutManager(new LinearLayoutManager(this));
         solutionAdapter = new SolutionAdapter(solutionSet,FeedOnClick.this);
         solutionsRV.setAdapter(solutionAdapter);
@@ -140,6 +151,19 @@ public class FeedOnClick extends AppCompatActivity {
                 descTV.setText(singlefeed.description);
                 solutionTV.setText(" Solutions ("+singlefeed.solutions+")");
                 Picasso.get().load(singlefeed.downurl).into(imageView);
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(singlefeed.userId);
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        UserModel user = dataSnapshot.getValue(UserModel.class);
+                        number = user.number;
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override

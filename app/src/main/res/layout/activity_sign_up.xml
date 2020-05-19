@@ -72,7 +72,7 @@
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Number"
+                android:hint="Number (10 digit)"
                 android:id="@+id/signup_number"
                 android:textColor="@color/ic_launcher_background"
                 android:textColorHint="@color/ic_launcher_background"

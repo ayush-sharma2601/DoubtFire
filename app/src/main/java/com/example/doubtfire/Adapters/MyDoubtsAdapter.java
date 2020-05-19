@@ -98,6 +98,7 @@ public class MyDoubtsAdapter extends RecyclerView.Adapter<MyDoubtsAdapter.MDVH> 
                 public boolean onLongClick(View view) {
                     Toast.makeText(itemView.getContext(),"long pressed",Toast.LENGTH_SHORT).show();
                     MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(itemView.getContext());
+                    dialog.setBackground(itemView.getContext().getDrawable(R.drawable.feed_back));
                     dialog.setTitle("Options");
                     dialog.setCancelable(true);
                     dialog.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
