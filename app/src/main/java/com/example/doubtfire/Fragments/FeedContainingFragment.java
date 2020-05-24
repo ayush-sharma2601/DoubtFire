@@ -45,6 +45,7 @@ public class FeedContainingFragment extends Fragment {
     RelativeLayout feedBack;
     Chip math,phy,cs,bio,chem,es;
     ArrayList<String> subjectList = new ArrayList<>();
+    ArrayList<ImageModel> alldata = new ArrayList<>();
 
     boolean isLoading = false;
 
@@ -57,18 +58,20 @@ public class FeedContainingFragment extends Fragment {
 
         chipListener();
 
+
         //setting up firebase needs
-        loadFromFirebase(subjectList);
-//        Log.i(TAG, "onCreateView: "+populateData.size());
+        alldata = loadFromFirebase(subjectList);
+        Log.i(TAG, "onCreateView: "+alldata.size());
 
 //        initScrollListener();
 
         return view;
     }
 
-    private void loadFromFirebase(ArrayList<String> subjectList) {
+    private ArrayList<ImageModel> loadFromFirebase(ArrayList<String> subjectList) {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        ArrayList<ImageModel> data = new ArrayList<>();
         Query imageQuery = databaseReference.child("imagesinfo").orderByKey();
         imageQuery.addChildEventListener(new ChildEventListener() {
             @Override
@@ -88,6 +91,7 @@ public class FeedContainingFragment extends Fragment {
 
                     }
                 });
+
 //                data.add(image);
                 Log.i(TAG, "onChildAdded: "+data.size());
 //                for(int i=0;(i<3 && i<data.size()) ;i++)
@@ -127,11 +131,9 @@ public class FeedContainingFragment extends Fragment {
         });
 
         Log.i(TAG, "onDataLoaded >>>>>>>>>>>>>>>>>>  "+data.size());
-
-
-
         adapter = new FeedItemAdapter(populateData,this);
         feedRV.setAdapter(adapter);
+        return data;
     }
 
     private void init() {
@@ -148,6 +150,8 @@ public class FeedContainingFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
         feedRV.setLayoutManager(linearLayoutManager);
         feedRV.setItemAnimator(new DefaultItemAnimator());
+
+
     }
 
     private void chipListener() {

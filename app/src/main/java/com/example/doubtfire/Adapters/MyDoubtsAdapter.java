@@ -1,8 +1,11 @@
 package com.example.doubtfire.Adapters;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +77,7 @@ public class MyDoubtsAdapter extends RecyclerView.Adapter<MyDoubtsAdapter.MDVH> 
     public class MDVH extends RecyclerView.ViewHolder {
         ImageView doubtImage;
         TextView doubtStatus,doubtDesc,doubtSubject;
+        Pair[] pairs = new Pair[2];
         public MDVH(@NonNull final View itemView) {
             super(itemView);
             doubtImage = itemView.findViewById(R.id.doubt_item_image);
@@ -86,10 +90,13 @@ public class MyDoubtsAdapter extends RecyclerView.Adapter<MyDoubtsAdapter.MDVH> 
                 public void onClick(View view) {
                     Intent expand = new Intent(itemView.getContext(), FeedOnClick.class);
                     expand.putExtra("imagekey",doubtImage.getTag().toString());
+                    pairs[0]= new Pair<View,String>(doubtImage,"image");
+                    pairs[1]= new Pair<View,String>(doubtDesc,"desc");
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),pairs);
 //                    expand.putExtra("name",feedPoster.getText().toString());
                     Log.i(TAG, ">>>>>>>>>>>>>>>>>>>>onClick: sent image ID "+doubtImage.getTag().toString());
                     expand.setAction("mydoubt");
-                    itemView.getContext().startActivity(expand);
+                    itemView.getContext().startActivity(expand,options.toBundle());
                 }
             });
 

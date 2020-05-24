@@ -34,7 +34,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:backgroundTint="@color/colorPrimaryDark"
         android:id="@+id/math_expression"
-        android:hint="Type exppression here"
+        android:hint="Type expression here"
         android:textColor="@color/colorPrimaryDark"/>
     <TextView
         android:layout_width="match_parent"

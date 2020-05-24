@@ -6,8 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Splash"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="top|end"
     android:background="@drawable/splash">
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/icon_full_color"
+        android:layout_margin="30dp"/>
 
 
 </LinearLayout>

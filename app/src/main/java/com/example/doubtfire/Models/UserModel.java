@@ -4,6 +4,7 @@ public class UserModel {
     public String uid;
     public String name;
     public String number;
+    public boolean privacy;
     public String photoID;
 
     public UserModel(){}
@@ -13,6 +14,7 @@ public class UserModel {
         this.name = name;
         this.number = number;
         this.photoID = "null";
+        this.privacy = false;
     }
 
     public String getUid() {

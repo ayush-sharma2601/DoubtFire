@@ -1,6 +1,9 @@
 package com.example.doubtfire.Activities;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,7 +70,35 @@ public class FeedOnClick extends AppCompatActivity {
         phoneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FeedOnClick.this,number,Toast.LENGTH_LONG).show();
+                if(number.equals("Number protected by User"))
+                    Toast.makeText(FeedOnClick.this,number,Toast.LENGTH_LONG).show();
+//                public void onClickWhatsApp(View view) {
+                else
+                    {
+                        PackageManager pm=getPackageManager();
+                        try {
+                            Uri uri = Uri.parse("smsto:" + "+91 "+number);
+                            Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+    //                        Intent waIntent = new Intent(Intent.ACTION_SEND);
+    //                        waIntent.setType("text/plain");
+    //                        String text = "YOUR TEXT HERE";
+    //
+                            PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+                            i.setPackage("com.whatsapp");
+                            startActivity(Intent.createChooser(i, ""));
+    //                        //Check if package exists or not. If not then code
+    //                        //in catch block will be called
+    //                        waIntent.setPackage("com.whatsapp");
+    //
+    //                        waIntent.putExtra(Intent.EXTRA_TEXT, text);
+    //                        startActivity(Intent.createChooser(waIntent, "Share with"));
+
+                        } catch (PackageManager.NameNotFoundException e) {
+                            Toast.makeText(FeedOnClick.this, "WhatsApp not Installed", Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    }
+//                }
             }
         });
 
@@ -145,6 +176,7 @@ public class FeedOnClick extends AppCompatActivity {
                 {
                     head.setVisibility(View.GONE);
                     status.setVisibility(View.GONE);
+                    phoneBtn.setVisibility(View.GONE);
                 }
                 posterTV.setText(name);
                 isSolvedTV.setText(singlefeed.isSolved);
@@ -156,7 +188,10 @@ public class FeedOnClick extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         UserModel user = dataSnapshot.getValue(UserModel.class);
-                        number = user.number;
+                        if(user.privacy == false)
+                            number = user.number;
+                        else
+                            number ="Number protected by User";
                     }
 
                     @Override

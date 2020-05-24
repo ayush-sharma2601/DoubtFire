@@ -47,6 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         init();
         fAuth = FirebaseAuth.getInstance();
+        signUpBtn.setTag("verify");
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +55,6 @@ public class SignUpActivity extends AppCompatActivity {
                 final String phone = numberET.getText().toString().trim();
                 final String email = emailET.getText().toString().trim();
                 final String password = passwordET.getText().toString().trim();
-                signUpBtn.setTag("verify");
                 //form check
                 {if(name.isEmpty())usernameET.setError("username required");
                 else usernameET.setError(null);
@@ -152,5 +152,7 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(SignUpActivity.this,"Phone Number Verified",Toast.LENGTH_LONG).show();
             signUpBtn.setTag("sign");
         }
+        else
+            Toast.makeText(SignUpActivity.this,"Phone Number Not Verified",Toast.LENGTH_LONG).show();
     }
 }

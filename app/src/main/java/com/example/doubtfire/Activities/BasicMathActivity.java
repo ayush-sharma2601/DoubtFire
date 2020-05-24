@@ -1,7 +1,6 @@
 package com.example.doubtfire.Activities;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,50 +29,47 @@ public class BasicMathActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_math);
         init();
-        calcBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                expression = mathET.getText().toString().trim();
-                if(expression.isEmpty())mathET.setError("No expression found");
-                else mathET.setError(null);
+        calcBtn.setOnClickListener(v -> {
+            expression = mathET.getText().toString().trim();
+            if(expression.isEmpty())mathET.setError("No expression found");
+            else mathET.setError(null);
 
-                if (mathET.getError()==null)
-                {
-                    try {
-                        finalExpr = URLEncoder.encode(expression,"UTF-8").trim().toUpperCase().toString();
+            if (mathET.getError()==null)
+            {
+                try {
+                    finalExpr = URLEncoder.encode(expression,"UTF-8").trim();
 //                        expr = finalExpr.
-                        answer.setText(finalExpr);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-                    if(!finalExpr.isEmpty())
-                    {
-                        Call<String> call = RetrofitClient.getClient().getResult(finalExpr);
-                        call.enqueue(new Callback<String>() {
-                            @Override
-                            public void onResponse(Call<String> call, Response<String> response) {
+                    answer.setText(finalExpr);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                if(!finalExpr.isEmpty())
+                {
+                    Call<String> call = RetrofitClient.getClient().getResult(expression);
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
 
-                                if(!response.isSuccessful())
-                                {
-                                    Toast.makeText(BasicMathActivity.this,"Code: "+response.code(),Toast.LENGTH_LONG).show();
-                                    return;
-                                }
-                                String answerFromApi = response.body();
-                                answer.setText("Solution: "+answerFromApi);
-
+                            if(!response.isSuccessful())
+                            {
+                                Toast.makeText(BasicMathActivity.this,"Code: "+response.code(),Toast.LENGTH_LONG).show();
+                                return;
                             }
-                            @Override
-                            public void onFailure(Call<String> call, Throwable t) {
-                                Toast.makeText(BasicMathActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
-                            }
-                        });
+                            String answerFromApi = response.body();
+                            answer.setText("Solution: "+answerFromApi);
 
-                    }
-                    else {
-                        Toast.makeText(BasicMathActivity.this,"Problem in encoding expression",Toast.LENGTH_LONG).show();
-                    }
+                        }
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Toast.makeText(BasicMathActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
+                        }
+                    });
 
                 }
+                else {
+                    Toast.makeText(BasicMathActivity.this,"Problem in encoding expression",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

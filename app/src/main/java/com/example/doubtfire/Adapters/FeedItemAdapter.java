@@ -1,7 +1,10 @@
 package com.example.doubtfire.Adapters;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +78,7 @@ public class FeedItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         ImageView feedImage;
         TextView feedPoster,feedDesc,feedSubject;
+        Pair[] pairs = new Pair[4];
         public ItemViewHolder(@NonNull final View itemView) {
             super(itemView);
             feedDesc = itemView.findViewById(R.id.feed_desc);
@@ -86,11 +90,16 @@ public class FeedItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View view) {
                     Intent expand = new Intent(itemView.getContext(), FeedOnClick.class);
+                    pairs[0]=new Pair<View,String>(feedImage,"image");
+                    pairs[1]=new Pair<View,String>(feedPoster,"name");
+                    pairs[2]=new Pair<View,String>(feedSubject,"subject");
+                    pairs[3]=new Pair<View,String>(feedDesc,"desc");
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) view.getContext(),pairs);
                     expand.putExtra("imagekey",feedImage.getTag().toString());
                     expand.putExtra("name",feedPoster.getText().toString());
                     Log.i(TAG, ">>>>>>>>>>>>>>>>>>>>onClick: sent image ID "+feedImage.getTag().toString());
                     expand.setAction("feed");
-                    itemView.getContext().startActivity(expand);
+                    itemView.getContext().startActivity(expand,options.toBundle());
                 }
             });
         }
